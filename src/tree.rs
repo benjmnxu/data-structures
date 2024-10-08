@@ -88,12 +88,12 @@ impl<T: Ord> TreeNode<T> {
             TreeNode::Node(current, left, right) => {
                 if *current < value {
                     right.insert(value);
-                } else if *current > value{
+                } else if *current > value {
                     left.insert(value);
                 }
             }
         }
-        if !self.is_balanced(){
+        if !self.is_balanced() {
             self.rebalance();
         }
     }
@@ -102,7 +102,7 @@ impl<T: Ord> TreeNode<T> {
     fn balance_factor(&self) -> i32 {
         match self {
             TreeNode::Leaf => 0,
-            TreeNode::Node(_, left, right) => left.height() as i32 - right.height() as i32
+            TreeNode::Node(_, left, right) => left.height() as i32 - right.height() as i32,
         }
     }
 
@@ -162,13 +162,13 @@ impl<T: Ord + PartialEq> PartialEq for TreeNode<T> {
             (TreeNode::Node(v1, n1, n2), TreeNode::Node(v2, n3, n4)) => {
                 v1 == v2 && n1 == n3 && n2 == n4
             }
-            _ => false
+            _ => false,
         }
     }
 }
 
 // Implement `Eq` for `TreeNode<T>`
-impl<T: Ord + Eq> Eq for TreeNode<T> { }
+impl<T: Ord + Eq> Eq for TreeNode<T> {}
 
 // Implement `From<Vec<T>>` for `TreeNode<T>`
 impl<T: Ord> From<Vec<T>> for TreeNode<T> {

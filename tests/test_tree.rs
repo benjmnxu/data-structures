@@ -21,7 +21,9 @@ fn validate<T: Ord>(node: &TreeNode<T>) -> bool {
             TreeNode::Node(_, left, right) => {
                 let x = property2(left)?;
                 let y = property2(right)?;
-                Some((x - y).abs()).filter(|x| x <= &1).map(|_| 1 + x.max(y))
+                Some((x - y).abs())
+                    .filter(|x| x <= &1)
+                    .map(|_| 1 + x.max(y))
             }
         }
     }
@@ -48,7 +50,6 @@ pub fn test_impls_default_5() {
         }
     }
 }
-
 
 /// This test checks that `TreeNode` properly implements `Eq`
 
@@ -128,7 +129,6 @@ pub fn test_impls_eq_5() {
     }
 }
 
-
 /// This test checks that inserting duplicate values does not affect the tree.
 
 #[test]
@@ -145,7 +145,6 @@ fn test_insert_same_5() {
         TreeNode::Node(1, Box::new(TreeNode::Leaf), Box::new(TreeNode::Leaf))
     );
 }
-
 
 /// This test checks that right rotation works correctly.
 
@@ -183,7 +182,6 @@ fn test_rotate_right_5() {
     assert_eq!(t, expected);
 }
 
-
 /// This test checks that left rotation works correctly.
 
 #[test]
@@ -219,7 +217,6 @@ fn test_rotate_left_5() {
     t.left_rotate();
     assert_eq!(t, expected);
 }
-
 
 /// This test checks that the tree is balanced after inserting a few values.
 #[test]
@@ -295,6 +292,5 @@ fn test_insert_roundtrip_10() {
     }
     quickcheck(roundtrip as fn(Vec<i32>) -> bool);
 }
-
 
 const _UNUSED: bool = true;
